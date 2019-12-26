@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background: #28965A;
+}
+
+.container {
+  width: 1800px;
+  height: 900px;
+  margin: 40px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .groups {
+  background: #0D3A27;
+  width: 500px;
+  height: 900px;
+  -webkit-box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+.container .groups header {
+  padding: 20px;
+  width: 100%;
+  height: 100px;
+  background: #2A6041;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .groups header h1 {
+  font-weight: 100;
+  font-size: 48px;
+}
+
+.container .groups header button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  outline: none;
+}
+
+.container .groups header button i {
+  font-size: 64px;
+  color: #6BFFB8;
+}
+
+.container .activities {
+  width: 1260px;
+}
+/*# sourceMappingURL=main.css.map */

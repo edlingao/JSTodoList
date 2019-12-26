@@ -1,0 +1,59 @@
+$darkGreen: #0D3A27;
+$greenObscure: #2A6041;
+$green: #28965A;
+$ligthGreen: #2CEAA3;
+$oceanGreen: #6BFFB8;
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+body{
+    background: $green;
+}
+
+.container{
+    width: 1800px;
+    height: 900px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .groups{
+        background: $darkGreen;
+        width: 500px;
+        height: 900px;
+        box-shadow: -20px 20px 20px rgba($color: #000000, $alpha: .50);
+        header{
+            padding: 20px;
+            width: 100%;
+            height: 100px;
+            background: $greenObscure;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-weight: 100;
+                font-size: 48px;
+            }
+            button{
+                cursor: pointer;
+                border: 0;
+                background: none;
+                outline: none;
+                i{
+                    font-size: 64px;
+                    color: $oceanGreen;
+                }
+            }
+        }
+    }
+    .activities{
+        width: 1260px;
+    }
+}
