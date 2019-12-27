@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>TodoList</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="groups">
-            <header class="groups-header">
-                <h1 class="title">Groups</h1>
-                <button class="add-group" id="add-group">
-                    <i class="material-icons">add</i>
+      <div class="groups">
+        <header class="groups-header">
+          <h1 class="title">Groups</h1>
+          <button class="add-group" id="add-group">
+            <i class="material-icons">add</i>
+          </button>
+        </header>
+        <div class="groups-container" id="group-container">
+          <div class="group" tabindex="-1">
+            <h1>Group Name</h1>
+            <div class="control-container" >
+              <button class="edit">
+                  <i class="material-icons">create</i>
                 </button>
-            </header>
-           
-        </div>
-        <div class="groups activities">
-            <header class="groups-header activities-header">
-                <h1 class="title">Groups</h1>
-                <button class="add-activities" id="add-activities">
-                    <i class="material-icons">add</i>
+
+                <button class="delete">
+                    <i class="material-icons">delete_sweep</i>
                 </button>
-            </header>
+            </div>
+          </div>
+          
         </div>
+      </div>
+      <div class="groups activities">
+        <header class="groups-header activities-header">
+          <h1 class="title">Groups</h1>
+          <button class="add-activities" id="add-activities">
+            <i class="material-icons">add</i>
+          </button>
+        </header>
+      </div>
     </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
