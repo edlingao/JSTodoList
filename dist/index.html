@@ -12,6 +12,19 @@
     <title>TodoList</title>
   </head>
   <body>
+    <div class="group-form hidden" id="group-form">
+      <header class="form-header" id="form-header">
+        New Group
+      </header>
+      <div class="form-body">
+          <div class="form-input">
+            <label for="group-name">Group Name</label>
+            <input type="text" name="group-name" id="group-name">
+          </div>
+          
+          <button class="add-group-form" id="add-group-form"><i class="material-icons">add_circle</i></button>
+      </div>
+    </div>
     <div class="container">
       <div class="groups">
         <header class="groups-header">
@@ -25,7 +38,7 @@
       </div>
       <div class="groups activities">
         <header class="groups-header activities-header">
-          <h1 class="title">Groups</h1>
+          <h1 class="title" id='activities-title'>Activities</h1>
           <button class="add-activities" id="add-activities">
             <i class="material-icons">add</i>
           </button>
