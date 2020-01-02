@@ -18,8 +18,7 @@ const interact = require('interactjs');
     }
   );
 
-  console.log(dom.setEventListeners());
-
+ dom.setEventListeners();
  
 }
 const dragMoveListener  = (event) => {

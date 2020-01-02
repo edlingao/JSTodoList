@@ -14,15 +14,35 @@
   <body>
     <div class="group-form hidden" id="group-form">
       <header class="form-header" id="form-header">
-        New Group
+        <h1>New Group</h1>
       </header>
       <div class="form-body">
-          <div class="form-input">
-            <label for="group-name">Group Name</label>
-            <input type="text" name="group-name" id="group-name">
-          </div>
-          
-          <button class="add-group-form" id="add-group-form"><i class="material-icons">add_circle</i></button>
+        <div class="form-input">
+          <label for="group-name">Group Name</label>
+          <input type="text" name="group-name" id="group-name" />
+        </div>
+
+        <button class="add-group-form" id="add-group-form">
+          <i class="material-icons">add_circle</i>
+        </button>
+      </div>
+    </div>
+    <div class="group-form hidden" id="activity-form">
+      <header class="form-header" id="form-header">
+        <h1>New Activity</h1>
+      </header>
+      <div class="form-body">
+        <div class="form-input">
+          <label for="activity-name">Activity Name</label>
+          <input type="text" name="activity-name" id="activity-name" />
+        </div>
+
+        <button class="add-activity-form" id="add-activity-form">
+          <i class="material-icons">add_circle</i>
+        </button>
+        <button class="activity-important">
+          <i class="material-icons">star_border</i>
+        </button>
       </div>
     </div>
     <div class="container">
@@ -33,16 +53,17 @@
             <i class="material-icons">add</i>
           </button>
         </header>
-        <div class="groups-container" id="group-container">          
-        </div>
+        <div class="groups-container" id="group-container"></div>
       </div>
       <div class="groups activities">
         <header class="groups-header activities-header">
-          <h1 class="title" id='activities-title'>Activities</h1>
+          <h1 class="title" id="activities-title">Activities</h1>
           <button class="add-activities" id="add-activities">
             <i class="material-icons">add</i>
           </button>
         </header>
+        <div id="activities-container" class="activities-container">
+        </div>
       </div>
     </div>
     <script src="main.js"></script>

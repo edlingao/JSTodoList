@@ -4,3 +4,4 @@ let Activity = ( id, title, description, important = false, completed = false ) 
   }
 
 exports.Activity = Activity;
+

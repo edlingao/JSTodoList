@@ -1,3 +1,4 @@
+
 class Group{
     constructor(groupName){
         this.groupName = groupName;
@@ -12,6 +13,9 @@ class Group{
     showActivities(){
         return this.activities;
     }
+    giveID(){
+        return this.activities.length - 1 == -1 ? 0 : this.activities.length - 1 == 0 ? 1 : this.activities.length - 1;
+    }
     editActivity(id, title, description, important = false, complete = false){
         let newActivity = this._edit(this.activities[id], title, description, important, complete);
         this.activities[id] = newActivity;
@@ -25,3 +29,7 @@ class Group{
         return activity;
     }
 }
+
+
+
+exports.Group = Group;
