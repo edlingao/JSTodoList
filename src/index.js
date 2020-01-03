@@ -1,9 +1,12 @@
-const domFunctions = require('./DOM');
-const dom = domFunctions.Dom();
-const interact = require('interactjs');
+import { DOM } from "./DOM";
+import { Activity } from "./activity";
+import { Group } from "./group";
+import interact from "interactjs";
+const Dom = DOM();
+const GROUPS = new Group(0,'Groups Container');
+  
 
- main = ()=>{
-
+const main = ()=>{
   interact('#form-header').draggable(
     {
       inertia: false,
@@ -18,22 +21,62 @@ const interact = require('interactjs');
     }
   );
 
- dom.setEventListeners();
+ setEventListeners();
  
 }
+
+const setEventListeners = () => {
+  const addGroup = document.querySelector("#add-group");
+  const groupForm = document.querySelector("#group-form");
+  const acitivityForm = document.querySelector("#activity-form");
+  const addGroupForm = document.querySelector("#add-group-form");
+  const addActivityForm = document.querySelector("#add-activity-form");
+  const groupContainer = document.querySelector("#group-container");
+  const addActivity = document.querySelector("#add-activities");
+  const activityContainer = document.querySelector('#activities-container');
+  const newGroupName = document.querySelector('#group-name');
+  const activityName = document.querySelector('#activity-name');
+  const activityDescription = document.querySelector('#activity-description');
+  const important = document.querySelector('#important');
+  const idHolder = document.querySelector('.ID-holder');
+  let newGroup;
+  let newActivity;
+
+  addGroup.addEventListener("click", () => {
+    groupForm.classList.remove("hidden");
+  });
+  addGroupForm.addEventListener("click", () => {
+
+    newGroup = new Group(GROUPS.giveID(), newGroupName.value);
+    groupForm.classList.add("hidden");
+    GROUPS.addActivity(newGroup);
+    
+    groupContainer.appendChild(Dom.drawGroup(newGroup, GROUPS));
+  });
+  addActivityForm.addEventListener("click", () => {
+    console.log(important.checked);
+    let group = GROUPS.speceficActivity(idHolder.id);
+    newActivity = Activity(group.giveID(),activityName.value, activityDescription.value, important.checked);
+    group.addActivity(newActivity);
+    activityContainer.appendChild(Dom.drawActivity(group.speceficActivity(newActivity.id)));
+    acitivityForm.classList.add("hidden");
+  });
+  addActivity.addEventListener("click", () => {
+    acitivityForm.classList.remove("hidden");
+  });
+};
+
 const dragMoveListener  = (event) => {
   var target = event.target.parentNode
-  // keep the dragged position in the data-x/data-y attributes
   var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
   var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
 
-  // translate the element
   target.style.webkitTransform =
     target.style.transform =
       'translate(' + x + 'px, ' + y + 'px)'
-
-  // update the posiion attributes
   target.setAttribute('data-x', x)
   target.setAttribute('data-y', y)
 }
+
+
 main();

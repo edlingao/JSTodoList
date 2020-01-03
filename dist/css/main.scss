@@ -77,9 +77,21 @@ body{
                     background: none;
                     cursor: pointer;
                     outline: none;
+                    
                     i{
+                        transition: all .3s;
                         color: $darkGreen;
                         font-size: 32px;
+                    }
+                    &:focus{
+                        i{
+                            color: white;
+                        }
+                    }
+                    &:hover{
+                        i{
+                            color: rgba($color: $darkGreen, $alpha: .5);;
+                        }
                     }
                 }
                 &:focus{
@@ -107,8 +119,14 @@ body{
                 background: none;
                 outline: none;
                 i{
+                    transition: all .3s;
                     font-size: 64px;
                     color: $oceanGreen;
+                }
+                &:focus{
+                    i{
+                        color: white;
+                    }
                 }
             }
         }
@@ -144,6 +162,13 @@ body{
                     right: 15px;
                     align-self: flex-start;
                     justify-self: flex-end;
+                    button{
+                        &:focus{
+                            i{
+                                color: $darkGreen;
+                            }
+                        }
+                    }
                     i{
                         font-size: 1.7vw;
                     }
@@ -235,11 +260,6 @@ body{
         .form-input{
             text-align: start;
         }
-        .activity-important{
-            left: 10px;
-            top: 2px;
-
-        }
         button{
             cursor: pointer;
             position: absolute;
@@ -275,8 +295,65 @@ body{
 
 }
 
+.activity-form{
+    height: auto;
+    .activity-important{
+        user-select: none;
+        position: absolute;
+        top: 0;
+        left: 0px;
+        input[type=checkbox]{
+            display: none;
+        }
+        input[type=checkbox] + .important:before{
+            font-family: 'Material Icons';
+            display: inline-block;
+            content: "star_outline";
+            letter-spacing: 10px;
+            color: $darkGreen;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        input[type=checkbox]:checked + .important:before{
+            content: "star";
+            font-family: 'Material Icons';
+            display: inline-block;
+            
+            letter-spacing: 10px;
+        }
+
+            /*
+
+            input[type=checkbox]{
+                
+                .important:before{   
+                   
+                }
+                }
+            }
+            input[type=checkbox]{
+                &:checked + .important:before{
+                    
+                }
+            }*/
+    }
+}
+
 .hidden{
     display: none;
+    
+}
+.fade-out{
+    animation: fade .3s ease-in;
+}
+
+@keyframes fade{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
 }
 
 @media screen and (max-width: 1366px){
@@ -316,32 +393,3 @@ body{
         }
     }
 }
-
-/*
-.form-important{
-            text-align: start;
-            width: 100%;
-            user-select: none;
-            
-            input{
-                display: none;
-            }
-            input[type=checkbox], label{
-                &:before{   
-                    font-family: 'Material Icons';
-                    display: inline-block;
-                    content: "check_box_outline_blank";
-                    letter-spacing: 10px;
-                }
-            }
-            input[type=checkbox]:checked, label{
-                &:before{
-                    font-family: 'Material Icons';
-                    display: inline-block;
-                    content: "check_box_outline_blank";
-                    letter-spacing: 5px;
-                    content: "check_box";
-                }
-            }
-        }
-*/

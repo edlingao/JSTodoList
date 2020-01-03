@@ -1,44 +1,13 @@
-const group = require('./group');
-const act = require('./activity');
-const Activity = act.Activity;
-
-const Dom = () => {
-  (setEventListeners = () => {
-    const addGroup = document.querySelector("#add-group");
-    const groupForm = document.querySelector("#group-form");
-    const acitivityForm = document.querySelector("#activity-form");
-    const addGroupForm = document.querySelector("#add-group-form");
-    const addActivityForm = document.querySelector("#add-activity-form");
-    const groupContainer = document.querySelector("#group-container");
-    const addActivity = document.querySelector("#add-activities");
-    const activityContainer = document.querySelector("#activities-container");
-
-    addGroup.addEventListener("click", () => {
-      groupForm.classList.remove("hidden");
-    });
-    addGroupForm.addEventListener("click", () => {
-      groupForm.classList.add("hidden");
-      groupContainer.appendChild(drawGroup({ groupName: "New Group", id: 1 }));
-    });
-    addActivityForm.addEventListener("click", () => {
-      activityContainer.appendChild(
-        drawActivity({
-          title: "New title",
-          description: "New description"
-        })
-      );
-      acitivityForm.classList.add("hidden");
-    });
-    addActivity.addEventListener("click", () => {
-      acitivityForm.classList.remove("hidden");
-    });
-  }),
-    (drawGroup = group => {
+const DOM = () => {
+    const drawGroup = (group, groupContainer) => {
       const container = document.createElement("div");
       const controlContainer = document.createElement("div");
       const editButton = document.createElement("button");
       const deleteButton = document.createElement("button");
       const groupName = document.createElement("h1");
+      const activityContainer = document.querySelector('#activities-container');
+      const idHolder = document.querySelector('.ID-holder');
+      const activityTitle = document.querySelector('#activities-title');
 
       groupName.innerHTML = group.groupName;
 
@@ -57,11 +26,24 @@ const Dom = () => {
       container.appendChild(groupName);
       container.appendChild(controlContainer);
       container.tabIndex = -1;
-      container.id = group.id;
+      container.id = `group_${group.id}`;
+      
 
+      container.addEventListener('click', ()=>{
+        clearContainer(activityContainer);
+        activityTitle.innerText = group.groupName;
+        idHolder.id = group.id;
+        group.showActivities().forEach(activity => {
+          activityContainer.appendChild(drawActivity(activity));
+        });
+      });
+      deleteButton.addEventListener('click', ()=>{
+        deleteGroup(group);
+        groupContainer.deleteActivity(group.id);
+      });
       return container;
-    }),
-    (drawActivity = activity => {
+    };
+    const drawActivity = (activity) => {
       //Universal containers
       const container = document.createElement("div");
       const controlsContainer = document.createElement("div");
@@ -118,17 +100,25 @@ const Dom = () => {
 
       container.appendChild(header);
       container.appendChild(descriptionContainer);
+      container.id = activity.id;
+
+      if(activity.important) 
+        star.innerHTML = toggleSymbols(star);
+      if(activity.completed) 
+        checkBox.innerHTML = toggleSymbols(checkBox);
 
       important.addEventListener("click", () => {
         star.innerHTML = toggleSymbols(star);
+        activity.important = !activity.important;
       });
       completed.addEventListener("click", () => {
         checkBox.innerHTML = toggleSymbols(checkBox);
+        activity.completed = !activity.completed;
       });
 
       return container;
-    }),
-    (toggleSymbols = action => {
+    };
+    const toggleSymbols = (action) => {
       switch (action.innerHTML) {
         case "star":
           return "star_border";
@@ -145,8 +135,17 @@ const Dom = () => {
         default:
           break;
       }
-    });
-  return { setEventListeners, drawGroup, drawActivity };
+    };
+    const deleteGroup = (group) =>{
+        
+        const groupContainer = document.querySelector(`#group_${group.id}`);
+        groupContainer.classList.add('fade-out');
+        setTimeout(()=> groupContainer.remove(), 200);
+    };
+    const clearContainer = (container)=>{
+      container.innerHTML = '';
+    };
+  return { drawGroup, drawActivity };
 };
 
-exports.Dom = Dom;
+export { DOM };
