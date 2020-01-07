@@ -151,6 +151,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .container .groups header h1 {
@@ -432,6 +436,55 @@ body {
 .fade-out {
   -webkit-animation: fade .3s ease-in;
           animation: fade .3s ease-in;
+}
+
+.alert {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: red;
+  width: 250px;
+  height: 100px;
+  position: absolute;
+  z-index: 10;
+  top: 5vh;
+  left: 50%;
+  padding: 20px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-weight: 900;
+  font-size: 26px;
+  -webkit-animation: slide 3s forwards;
+          animation: slide 3s forwards;
+  text-align: center;
+}
+
+@-webkit-keyframes slide {
+  from {
+    top: -10vh;
+  }
+  to {
+    top: 5vh;
+  }
+}
+
+@keyframes slide {
+  from {
+    top: -10vh;
+  }
+  to {
+    top: 5vh;
+  }
 }
 
 @-webkit-keyframes fade {

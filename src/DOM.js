@@ -34,7 +34,7 @@ const DOM = () => {
         activityTitle.innerText = group.groupName;
         idHolder.id = group.id;
         group.showActivities().forEach(activity => {
-          activityContainer.appendChild(drawActivity(activity));
+          activityContainer.appendChild(drawActivity(activity, group));
         });
       });
       deleteButton.addEventListener('click', ()=>{
@@ -43,7 +43,7 @@ const DOM = () => {
       });
       return container;
     };
-    const drawActivity = (activity) => {
+    const drawActivity = (activity, group) => {
       //Universal containers
       const container = document.createElement("div");
       const controlsContainer = document.createElement("div");
@@ -100,7 +100,7 @@ const DOM = () => {
 
       container.appendChild(header);
       container.appendChild(descriptionContainer);
-      container.id = activity.id;
+      container.id = `activity_${activity.id}`;
 
       if(activity.important) 
         star.innerHTML = toggleSymbols(star);
@@ -114,6 +114,10 @@ const DOM = () => {
       completed.addEventListener("click", () => {
         checkBox.innerHTML = toggleSymbols(checkBox);
         activity.completed = !activity.completed;
+      });
+      deleteButton.addEventListener('click', ()=>{
+        group.deleteActivity(activity.id);
+        deleteActivity(activity);
       });
 
       return container;
@@ -141,6 +145,12 @@ const DOM = () => {
         const groupContainer = document.querySelector(`#group_${group.id}`);
         groupContainer.classList.add('fade-out');
         setTimeout(()=> groupContainer.remove(), 200);
+    };
+    const deleteActivity = (activity) =>{
+      const activityContainer = document.querySelector(`#activity_${activity.id}`);
+      activityContainer.classList.add('fade-out');
+      setTimeout(()=> activityContainer.remove(), 200);
+
     };
     const clearContainer = (container)=>{
       container.innerHTML = '';

@@ -4,7 +4,7 @@ import { Group } from "./group";
 import interact from "interactjs";
 const Dom = DOM();
 const GROUPS = new Group(0,'Groups Container');
-  
+
 
 const main = ()=>{
   interact('#form-header').draggable(
@@ -39,27 +39,36 @@ const setEventListeners = () => {
   const activityDescription = document.querySelector('#activity-description');
   const important = document.querySelector('#important');
   const idHolder = document.querySelector('.ID-holder');
-  let newGroup;
-  let newActivity;
+
 
   addGroup.addEventListener("click", () => {
     groupForm.classList.remove("hidden");
   });
   addGroupForm.addEventListener("click", () => {
 
-    newGroup = new Group(GROUPS.giveID(), newGroupName.value);
+    const newGroup = new Group(GROUPS.giveID(), newGroupName.value);
     groupForm.classList.add("hidden");
     GROUPS.addActivity(newGroup);
     
     groupContainer.appendChild(Dom.drawGroup(newGroup, GROUPS));
   });
   addActivityForm.addEventListener("click", () => {
-    console.log(important.checked);
-    let group = GROUPS.speceficActivity(idHolder.id);
-    newActivity = Activity(group.giveID(),activityName.value, activityDescription.value, important.checked);
-    group.addActivity(newActivity);
-    activityContainer.appendChild(Dom.drawActivity(group.speceficActivity(newActivity.id)));
-    acitivityForm.classList.add("hidden");
+    try
+    {
+      const group = GROUPS.speceficActivity(idHolder.id);
+      const newActivity = Activity(group.giveID(),activityName.value, activityDescription.value, important.checked);
+      group.addActivity(newActivity);
+      activityContainer.appendChild(Dom.drawActivity(group.speceficActivity(newActivity.id), GROUPS.speceficActivity(idHolder.id)));
+      acitivityForm.classList.add("hidden");
+    }catch(err){
+      const errorMsg = document.querySelector('#alert');
+      errorMsg.classList.remove('hidden');
+      errorMsg.classList.add('alert');
+      setTimeout(()=>{
+        errorMsg.classList.remove('alert');
+        errorMsg.classList.add('hidden');
+      }, 4000);
+    }
   });
   addActivity.addEventListener("click", () => {
     acitivityForm.classList.remove("hidden");

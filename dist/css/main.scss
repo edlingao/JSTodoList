@@ -108,7 +108,7 @@ body{
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            user-select: none;
             h1{
                 font-weight: 100;
                 font-size: 48px;
@@ -347,6 +347,37 @@ body{
     animation: fade .3s ease-in;
 }
 
+.alert{
+    user-select: none;
+    background: red;
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    z-index: 10;
+    top: 5vh;
+    left: 50%;
+    padding: 20px;;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 26px;
+    animation: slide 3s forwards;
+    text-align: center;
+}
+
+@keyframes slide{
+    from{
+        top: -10vh;
+    }
+    to{
+        top: 5vh;
+    }
+}
+
 @keyframes fade{
     from{
         opacity: 1;
@@ -393,3 +424,5 @@ body{
         }
     }
 }
+
+
