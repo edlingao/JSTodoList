@@ -21,13 +21,32 @@ class Group{
         return this._existsID(this.activities.length);
     }
     editActivity(id, title, description, important = false, complete = false){
-        let newActivity = this._edit(this.activities[id], title, description, important, complete);
-        this.activities[id] = newActivity;
+        let newActivity = this._edit(this.speceficActivity(id), title, description, important, complete);
+        this.activities = this.activities.filter((activity) => {
+            if(activity.id == id)
+                return newActivity;
+            else
+                return activity;
+        });
+    }
+    editGroup(id, groupContinaer, groupName){
+        const newGroup = this._editGroup(groupContinaer.speceficActivity(id),groupName);
+        this.activities = this.activities.filter((activity) => {
+            if(activity.id == id)
+                return newGroup;
+            else
+                return activity;
+        });
+        
     }
     _existsID(id) {
         const exists = this.activities.some(activity => activity.id === id);
         return exists ? this._existsID(id + 1) : id;
       }
+    _editGroup(group, groupName){
+        group.groupName = groupName
+        return group;
+    }
     _edit(activity, title, description, important, complete){
         activity.title = title;
         activity.description = description;

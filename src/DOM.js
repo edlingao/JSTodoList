@@ -2,17 +2,14 @@ const DOM = () => {
     const drawGroup = (group, groupContainer) => {
       const container = document.createElement("div");
       const controlContainer = document.createElement("div");
-      const editButton = document.createElement("button");
       const deleteButton = document.createElement("button");
       const groupName = document.createElement("h1");
       const activityContainer = document.querySelector('#activities-container');
       const idHolder = document.querySelector('.ID-holder');
       const activityTitle = document.querySelector('#activities-title');
-
+      groupName.id = `group_title_${group.id}`;
       groupName.innerHTML = group.groupName;
 
-      editButton.innerHTML = `<i class="material-icons">create</i>`;
-      editButton.classList.add("edit");
 
       deleteButton.innerHTML = `<i class="material-icons">delete_sweep</i>`;
       deleteButton.classList.add("delete");
@@ -20,7 +17,6 @@ const DOM = () => {
       controlContainer.classList.add("control-container");
       container.classList.add("group");
 
-      controlContainer.appendChild(editButton);
       controlContainer.appendChild(deleteButton);
 
       container.appendChild(groupName);
@@ -119,7 +115,7 @@ const DOM = () => {
         group.deleteActivity(activity.id);
         deleteActivity(activity);
       });
-
+      
       return container;
     };
     const toggleSymbols = (action) => {
@@ -155,6 +151,15 @@ const DOM = () => {
     const clearContainer = (container)=>{
       container.innerHTML = '';
     };
+    const editGroup = (group, groupContainer, groupName) => {
+      const title = document.querySelector(`#group_title_${group.id}`);
+      title.innerText = groupName;
+      groupContainer.editGroup(group.id, groupContainer, groupName);
+    };
+    const editActivity = (activity, group) => {
+
+    };
+
   return { drawGroup, drawActivity };
 };
 

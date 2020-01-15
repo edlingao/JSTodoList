@@ -39,7 +39,7 @@ const setEventListeners = () => {
   const activityDescription = document.querySelector('#activity-description');
   const important = document.querySelector('#important');
   const idHolder = document.querySelector('.ID-holder');
-
+  
 
   addGroup.addEventListener("click", () => {
     groupForm.classList.remove("hidden");
