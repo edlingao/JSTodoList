@@ -7,6 +7,12 @@ const GROUPS = new Group(0,'Groups Container');
 
 
 const main = ()=>{
+  const defaultGroup = new Group(GROUPS.giveID(),'New Group');
+  const groupContainer = document.querySelector("#group-container");
+
+  GROUPS.addActivity(defaultGroup);
+  groupContainer.appendChild(Dom.drawGroup(defaultGroup,GROUPS));
+
   interact('#form-header').draggable(
     {
       inertia: false,
@@ -47,6 +53,7 @@ const setEventListeners = () => {
   addGroupForm.addEventListener("click", () => {
 
     const newGroup = new Group(GROUPS.giveID(), newGroupName.value);
+    newGroup.groupName = GROUPS.existsGroup(newGroup.groupName);
     groupForm.classList.add("hidden");
     GROUPS.addActivity(newGroup);
     

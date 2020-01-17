@@ -39,6 +39,18 @@ class Group{
         });
         
     }
+    existsGroup(groupName){
+        const existing = this.activities.some(group => group.groupName === groupName);
+        if(!existing)
+            return groupName;
+        else
+            return this._existsGroup(groupName);
+    }
+    _existsGroup(groupName, i = 1){
+        const exists = this.activities.some(activity => activity.groupName == groupName);
+        const newGroupname = `${groupName.split('(')[0]}(${i})`;
+        return exists ? this._existsGroup(newGroupname, i + 1) : groupName;
+    }
     _existsID(id) {
         const exists = this.activities.some(activity => activity.id === id);
         return exists ? this._existsID(id + 1) : id;
@@ -55,6 +67,7 @@ class Group{
 
         return activity;
     }
-};
+}
 
-export { Group };
+
+export {Group};
