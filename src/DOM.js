@@ -150,15 +150,7 @@ const DOM = () => {
     };
     const clearContainer = (container)=>{
       container.innerHTML = '';
-    };
-    const editGroup = (group, groupContainer, groupName) => {
-      const title = document.querySelector(`#group_title_${group.id}`);
-      title.innerText = groupName;
-      groupContainer.editGroup(group.id, groupContainer, groupName);
-    };
-    const editActivity = (activity, group) => {
-
-    };
+    }; 
 
   return { drawGroup, drawActivity };
 };
