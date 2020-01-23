@@ -7,6 +7,12 @@ const GROUPS = new Group(0,'Groups Container');
 
 
 const main = ()=>{
+  const defaultGroup = new Group(GROUPS.giveID(),'New Group');
+  const groupContainer = document.querySelector("#group-container");
+
+  GROUPS.addActivity(defaultGroup);
+  groupContainer.appendChild(Dom.drawGroup(defaultGroup,GROUPS));
+
   interact('#form-header').draggable(
     {
       inertia: false,
@@ -39,6 +45,7 @@ const setEventListeners = () => {
   const activityDescription = document.querySelector('#activity-description');
   const important = document.querySelector('#important');
   const idHolder = document.querySelector('.ID-holder');
+  const dateValue = document.querySelector('#activity-date');
   
 
   addGroup.addEventListener("click", () => {
@@ -47,6 +54,7 @@ const setEventListeners = () => {
   addGroupForm.addEventListener("click", () => {
 
     const newGroup = new Group(GROUPS.giveID(), newGroupName.value);
+    newGroup.groupName = GROUPS.existsGroup(newGroup.groupName);
     groupForm.classList.add("hidden");
     GROUPS.addActivity(newGroup);
     
@@ -56,7 +64,7 @@ const setEventListeners = () => {
     try
     {
       const group = GROUPS.speceficActivity(idHolder.id);
-      const newActivity = Activity(group.giveID(),activityName.value, activityDescription.value, important.checked);
+      const newActivity = Activity(group.giveID(),activityName.value, activityDescription.value, important.checked,false,dateValue.value);
       group.addActivity(newActivity);
       activityContainer.appendChild(Dom.drawActivity(group.speceficActivity(newActivity.id), GROUPS.speceficActivity(idHolder.id)));
       acitivityForm.classList.add("hidden");
