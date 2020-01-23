@@ -68,8 +68,6 @@ const setEventListeners = () => {
       group.addActivity(newActivity);
       activityContainer.appendChild(Dom.drawActivity(group.speceficActivity(newActivity.id), GROUPS.speceficActivity(idHolder.id)));
       acitivityForm.classList.add("hidden");
-      console.log(dateValue.value);
-
     }catch(err){
       const errorMsg = document.querySelector('#alert');
       errorMsg.classList.remove('hidden');
