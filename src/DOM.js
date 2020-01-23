@@ -54,6 +54,7 @@ const DOM = () => {
       //Text containers
       const activityTitle = document.createElement("h1");
       const activityDescription = document.createElement("p");
+      const activityDate = document.createElement('p');
       const star = document.createElement("i");
       const checkBox = document.createElement("i");
       const close = document.createElement("i");
@@ -69,6 +70,7 @@ const DOM = () => {
 
       activityTitle.classList.add("acitivity-title");
       activityDescription.classList.add("activity-description");
+      activityDate.classList.add('activity-date');
 
       star.classList.add("material-icons");
       checkBox.classList.add("material-icons");
@@ -80,6 +82,7 @@ const DOM = () => {
 
       activityTitle.innerText = activity.title;
       activityDescription.innerText = activity.description;
+      activityDate.innerText = activity.dueDate;
 
       important.appendChild(star);
       completed.appendChild(checkBox);
@@ -91,6 +94,7 @@ const DOM = () => {
 
       header.appendChild(activityTitle);
       header.appendChild(controlsContainer);
+      header.appendChild(activityDate);
 
       descriptionContainer.appendChild(activityDescription);
 
